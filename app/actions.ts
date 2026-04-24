@@ -16,7 +16,7 @@ export async function sendEmail(formData: FormData) {
     await resend.emails.send({
       from: 'onboarding@resend.dev', // DEIXE ASSIM no plano grátis inicial
       to: 'antenor@antenor.com.br', // COLOQUE SEU E-MAIL AQUI
-      subject: `Novo contato: ${name}`,
+      subject: `Novo contato: ${firstName} ${lastName}`, // <--- CORRIGIDO AQUI
       html: `
         <div style="font-family: sans-serif; line-height: 1.5; color: #333;">
           <h2>Você recebeu uma nova mensagem do site! 🚀</h2>
