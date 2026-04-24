@@ -36,19 +36,28 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col gap-4 sm:flex-row">
+              {/* BOTAO 1: Agora rola para o contato */}
               <Button
+                asChild
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                Schedule a Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <a href="#contact">
+                  Schedule a Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
               </Button>
+
+              {/* BOTAO 2: Agora rola para baixo (coloquei #features como exemplo) */}
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="border-foreground/20 bg-card hover:bg-accent"
               >
-                Explore Our Ideas
+                <a href="#technology-focus">
+                  Explore Our Ideas
+                </a>
               </Button>
             </div>
 
@@ -56,7 +65,7 @@ export function HeroSection() {
             <div className="my-4 h-px w-full bg-border" />
 
             {/* Focus Areas */}
-            <div className="flex flex-col gap-2">
+            <div id="technology-focus" className="flex flex-col gap-2">
               <p className="text-sm font-medium text-foreground">
                 Our Technology Focus
               </p>
@@ -157,4 +166,4 @@ export function HeroSection() {
       </div>
     </section>
   )
-}
+} 

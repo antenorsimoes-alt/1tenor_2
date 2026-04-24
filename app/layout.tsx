@@ -35,7 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    // Adicionamos "scroll-smooth" aqui embaixo:
+    <html lang="en" className="bg-background scroll-smooth">
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

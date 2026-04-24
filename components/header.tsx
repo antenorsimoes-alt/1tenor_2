@@ -33,8 +33,9 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-            Get Started
+          {/* AJUSTE AQUI: Adicionado asChild e o link para #contact */}
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <a href="#contact">Get Started</a>
           </Button>
         </nav>
 
@@ -62,8 +63,11 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-              Get Started
+            {/* AJUSTE AQUI: Adicionado asChild, o link e o fechamento do menu ao clicar */}
+            <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+                Get Started
+              </a>
             </Button>
           </nav>
         </div>
