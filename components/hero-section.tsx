@@ -91,7 +91,7 @@ export function HeroSection() {
               
               {/* Center Profile Image */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-primary/30 shadow-xl md:h-40 md:w-40 lg:h-48 lg:w-48">
+                <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-primary/30 shadow-xl md:h-56 md:w-56 lg:h-72 lg:w-72">
                   <Image
                     src="/images/profile.png"
                     alt="Profile"
