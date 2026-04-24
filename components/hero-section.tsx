@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Link2, Car, Cctv, Train } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   return (
@@ -87,6 +88,19 @@ export function HeroSection() {
               
               {/* Inner filled circle - pulse */}
               <div className="absolute inset-16 animate-pulse rounded-full bg-primary/10" />
+              
+              {/* Center Profile Image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-primary/30 shadow-xl md:h-40 md:w-40 lg:h-48 lg:w-48">
+                  <Image
+                    src="/images/profile.png"
+                    alt="Profile"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
               
               {/* Semi-circle arc - rotating */}
               <svg
