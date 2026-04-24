@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { sendEmail } from "@/app/actions" // 1. IMPORTAMOS A FUNÇÃO AQUI
 
 export function ContactSection() {
   return (
@@ -25,7 +26,8 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <div className="rounded-2xl bg-card p-6 shadow-lg md:p-8">
-            <form className="flex flex-col gap-6">
+            {/* 2. ADICIONAMOS A ACTION AQUI */}
+            <form action={sendEmail} className="flex flex-col gap-6">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="firstName" className="text-sm font-medium text-foreground">
@@ -33,6 +35,7 @@ export function ContactSection() {
                   </label>
                   <Input
                     id="firstName"
+                    name="firstName" // <- ADICIONADO
                     placeholder="John"
                     className="bg-background"
                   />
@@ -43,6 +46,7 @@ export function ContactSection() {
                   </label>
                   <Input
                     id="lastName"
+                    name="lastName" // <- ADICIONADO
                     placeholder="Doe"
                     className="bg-background"
                   />
@@ -55,6 +59,7 @@ export function ContactSection() {
                 </label>
                 <Input
                   id="email"
+                  name="email" // <- ADICIONADO
                   type="email"
                   placeholder="john@example.com"
                   className="bg-background"
@@ -67,6 +72,7 @@ export function ContactSection() {
                 </label>
                 <Input
                   id="organization"
+                  name="organization" // <- ADICIONADO
                   placeholder="City of Example"
                   className="bg-background"
                 />
@@ -78,6 +84,7 @@ export function ContactSection() {
                 </label>
                 <Textarea
                   id="message"
+                  name="message" // <- ADICIONADO
                   placeholder="Tell us about your project or ask about our technology insights..."
                   rows={4}
                   className="bg-background"
