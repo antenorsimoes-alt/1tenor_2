@@ -124,7 +124,7 @@ export default function BlueCityPage() {
         </h2>
         <div className="grid w-full items-center gap-12 md:grid-cols-2">
           <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-black/40 backdrop-blur-sm">
-            <Image src="/images/bluecity/dashboard.gif" alt="Dashboard" fill className="object-contain" />
+            <Image src="/images/bluecity/dashboard.png" alt="Dashboard" fill className="object-contain" />
           </div>
           <div>
             <h3 className="mb-6 text-2xl font-bold text-[#00c49a]">{content.intersections.heading}</h3>
