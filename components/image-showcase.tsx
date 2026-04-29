@@ -1,40 +1,44 @@
-import Image from "next/image"
+"use client"
 
-const showcaseImages = [
-  {
-    src: "/images/smart-traffic.jpg",
-    alt: "Smart traffic intersection with connected vehicles and adaptive signals",
-    title: "Connected Intersections",
-    description: "AI-powered traffic management systems that adapt in real-time",
-  },
-  {
-    src: "/images/lidar-sensing.jpg",
-    alt: "LiDAR point cloud visualization of urban traffic",
-    title: "LiDAR Sensing",
-    description: "3D mapping technology for precise traffic analysis",
-  },
-  {
-    src: "/images/smart-rail.jpg",
-    alt: "Modern smart rail station with digital displays",
-    title: "Smart Rail Systems",
-    description: "Integrated transit monitoring and passenger information",
-  },
-]
+import Image from "next/image"
+import { useLanguage } from "@/lib/i18n"
 
 export function ImageShowcase() {
+  const { t } = useLanguage()
+
+  const showcaseImages = [
+    {
+      src: "/images/smart-traffic.jpg",
+      alt: t.imageShowcase.images.traffic.alt,
+      title: t.imageShowcase.images.traffic.title,
+      description: t.imageShowcase.images.traffic.description,
+    },
+    {
+      src: "/images/lidar-sensing.jpg",
+      alt: t.imageShowcase.images.lidar.alt,
+      title: t.imageShowcase.images.lidar.title,
+      description: t.imageShowcase.images.lidar.description,
+    },
+    {
+      src: "/images/smart-rail.jpg",
+      alt: t.imageShowcase.images.rail.alt,
+      title: t.imageShowcase.images.rail.title,
+      description: t.imageShowcase.images.rail.description,
+    },
+  ]
+
   return (
     <section className="py-10 md:py-14">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 flex flex-col items-center gap-4 text-center">
           <span className="text-sm font-medium uppercase tracking-wider text-primary">
-            Visual Insights
+            {t.imageShowcase.badge}
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            The Future of Urban Mobility
+            {t.imageShowcase.title}
           </h2>
           <p className="max-w-2xl text-muted-foreground">
-            From intelligent intersections to connected rail networks, these technologies
-            are reshaping how cities move.
+            {t.imageShowcase.description}
           </p>
         </div>
 

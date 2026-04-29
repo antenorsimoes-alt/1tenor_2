@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { LanguageProvider } from '@/lib/i18n'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -35,10 +36,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    // Adicionamos "scroll-smooth" aqui embaixo:
-    <html lang="en" className="bg-background scroll-smooth">
+    <html lang="en" className="bg-background scroll-smooth" suppressHydrationWarning>
       <body className="font-sans antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

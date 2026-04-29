@@ -4,15 +4,18 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
-
-const navLinks = [
-  { href: "#insights", label: "Ideas & Insights" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-]
+import { useLanguage } from "@/lib/i18n"
+import { LanguageSelector } from "@/components/language-selector"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useLanguage()
+
+  const navLinks = [
+    { href: "#insights", label: t.nav.insights },
+    { href: "#about", label: t.nav.about },
+    { href: "#contact", label: t.nav.contact },
+  ]
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -23,7 +26,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -33,20 +36,23 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          {/* AJUSTE AQUI: Adicionado asChild e o link para #contact */}
+          <LanguageSelector />
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <a href="#contact">Get Started</a>
+            <a href="#contact">{t.nav.getStarted}</a>
           </Button>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          className="flex items-center justify-center md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSelector />
+          <button
+            className="flex items-center justify-center"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -63,10 +69,9 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            {/* AJUSTE AQUI: Adicionado asChild, o link e o fechamento do menu ao clicar */}
             <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                Get Started
+                {t.nav.getStarted}
               </a>
             </Button>
           </nav>

@@ -3,8 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Link2, Car, Cctv, Train } from "lucide-react"
 import Image from "next/image"
+import { useLanguage } from "@/lib/i18n"
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative overflow-hidden py-12 md:py-16 lg:py-20">
       <div className="container mx-auto px-4 md:px-6">
@@ -15,40 +18,36 @@ export function HeroSection() {
             <div className="inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-2">
               <Link2 className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
-                Building Sustainable Urban Futures
+                {t.hero.badge}
               </span>
             </div>
 
             {/* Heading */}
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
               <span className="text-balance">
-                Transforming Cities Through{" "}
+                {t.hero.title1}
               </span>
-              <span className="text-primary">Intelligent Mobility</span>
+              <span className="text-primary">{t.hero.title2}</span>
             </h1>
 
             {/* Description */}
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We bring fresh perspectives and cutting-edge technology expertise to
-              help governments and organizations navigate the future of urban mobility
-              and smart city infrastructure.
+              {t.hero.description}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col gap-4 sm:flex-row">
-              {/* BOTAO 1: Agora rola para o contato */}
               <Button
                 asChild
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <a href="#contact">
-                  Schedule a Consultation
+                  {t.hero.cta1}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
 
-              {/* BOTAO 2: Agora rola para baixo (coloquei #features como exemplo) */}
               <Button
                 asChild
                 size="lg"
@@ -56,7 +55,7 @@ export function HeroSection() {
                 className="border-foreground/20 bg-card hover:bg-accent"
               >
                 <a href="#technology-focus">
-                  Explore Our Ideas
+                  {t.hero.cta2}
                 </a>
               </Button>
             </div>
@@ -67,20 +66,20 @@ export function HeroSection() {
             {/* Focus Areas */}
             <div id="technology-focus" className="flex flex-col gap-2">
               <p className="text-sm font-medium text-foreground">
-                Our Technology Focus
+                {t.hero.focusTitle}
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
-                  LiDAR Sensing
+                  {t.hero.tags.lidar}
                 </span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
-                  AI Vision Systems
+                  {t.hero.tags.aiVision}
                 </span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
-                  IoT Networks
+                  {t.hero.tags.iot}
                 </span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
-                  Digital Twins
+                  {t.hero.tags.digitalTwins}
                 </span>
               </div>
             </div>
@@ -166,4 +165,4 @@ export function HeroSection() {
       </div>
     </section>
   )
-} 
+}
