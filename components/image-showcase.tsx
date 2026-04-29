@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link" // <-- IMPORT ADICIONADO AQUI
 import { useLanguage } from "@/components/language-provider"
 
 // Mantemos os caminhos das imagens aqui, na mesma ordem das traduções
@@ -32,11 +33,9 @@ export function ImageShowcase() {
           {t.showcase.items.map((item, index) => {
             const imageSrc = imagePaths[index]
 
-            return (
-              <div  
-                key={item.title}
-                className="group relative overflow-hidden rounded-2xl"
-              >
+            // Separamos o conteúdo visual do card em uma constante
+            const cardContent = (
+              <>
                 <div className="aspect-[4/3] overflow-hidden">
                   <Image
                     src={imageSrc}
@@ -53,6 +52,29 @@ export function ImageShowcase() {
                   </h3>
                   <p className="text-sm text-white/80">{item.description}</p>
                 </div>
+              </>
+            )
+
+            // Se o item tiver o href (como o LiDAR), renderizamos como Link
+            if (item.href) {
+              return (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="group relative block overflow-hidden rounded-2xl cursor-pointer ring-offset-background transition-all hover:ring-2 hover:ring-primary hover:ring-offset-2"
+                >
+                  {cardContent}
+                </Link>
+              )
+            }
+
+            // Se não tiver href, renderizamos como uma div normal
+            return (
+              <div
+                key={item.title}
+                className="group relative overflow-hidden rounded-2xl"
+              >
+                {cardContent}
               </div>
             )
           })}
@@ -60,4 +82,4 @@ export function ImageShowcase() {
       </div>
     </section>
   )
-}
+} 

@@ -11,6 +11,7 @@ type ShowcaseItem = {
   alt: string;
   title: string;
   description: string;
+  href?: string;
 };
 
 type SpotlightFeature = {
@@ -24,10 +25,14 @@ type SpotlightCard = {
   features: SpotlightFeature[];
 };
 
-// Tipo para os links do rodapé
 type FooterLink = {
   label: string;
   href: string;
+};
+
+type FocusTag = { 
+  label: string; 
+  href?: string; 
 };
 
 export type Translation = {
@@ -45,14 +50,14 @@ export type Translation = {
     buttonContact: string;
     buttonExplore: string;
     focusTitle: string;
-    focusTags: string[];
+    focusTags: FocusTag[];
   };
   insights: {
     badge: string;
     title: string;
     description: string;
     cta: string;
-    items: InsightItem[];
+    items: (InsightItem & { href?: string })[];
   };
   showcase: {
     badge: string;
@@ -116,6 +121,17 @@ export type Translation = {
     privacyPolicy: string;
     termsOfService: string;
   };
+  bluecityHotsite: {
+    backLink: string; // <-- Tipagem adicionada aqui
+    hero: { title: string; span: string; subtitle: string; badge: string };
+    architecture: { title: string; span: string; heading: string; description: string; items: string[] };
+    comparison: { title: string; span: string; cards: Array<{ title: string; description: string }> };
+    intersections: { title: string; span: string; heading: string; items: string[] };
+    highways: { title: string; span: string; heading: string; items: string[] };
+    installation: { title: string; span: string; heading: string; items: string[] };
+    certifications: { title: string; span: string; cards: Array<{ title: string; description: string }> };
+    footer: { title: string; span: string; subtitle: string; name: string; role: string };
+  };
 };
 
 export const translations: Record<Language, Translation> = {
@@ -134,7 +150,12 @@ export const translations: Record<Language, Translation> = {
       buttonContact: "Agendar uma Consultoria",
       buttonExplore: "Explorar Nossas Ideias",
       focusTitle: "Nosso Foco Tecnológico",
-      focusTags: ["Sensores LiDAR", "Sistemas de Visão IA", "Redes IoT", "Gêmeos Digitais"]
+      focusTags: [
+        { label: "Sensores LiDAR", href: "/bluecity" },
+        { label: "Sistemas de Visão IA" },
+        { label: "Redes IoT" },
+        { label: "Gêmeos Digitais" }
+      ]
     },
     insights: {
       badge: "Ideias e Artigos",
@@ -146,7 +167,8 @@ export const translations: Record<Language, Translation> = {
           category: "Tecnologia LiDAR",
           title: "Sensoriamento de Tráfego 3D com LiDAR",
           description: "Sensores LiDAR criam modelos 3D precisos do fluxo de tráfego, permitindo contagem anônima de veículos, detecção de velocidade e análise de quase-acidentes em cruzamentos, sem problemas de privacidade.",
-          tags: ["Nuvens de Pontos", "Análise de Tráfego", "Foco na Privacidade"]
+          tags: ["Nuvens de Pontos", "Análise de Tráfego", "Foco na Privacidade"],
+          href: "/bluecity"
         },
         {
           category: "Câmeras Inteligentes",
@@ -193,7 +215,8 @@ export const translations: Record<Language, Translation> = {
         {
           alt: "Visualização em nuvem de pontos LiDAR do tráfego urbano",
           title: "Sensoriamento LiDAR",
-          description: "Tecnologia de mapeamento 3D para análise precisa de tráfego"
+          description: "Tecnologia de mapeamento 3D para análise precisa de tráfego",
+          href: "/bluecity"
         },
         {
           alt: "Estação ferroviária inteligente moderna com telas digitais",
@@ -247,7 +270,7 @@ export const translations: Record<Language, Translation> = {
       badge: "Sobre Nós",
       title: "Uma Nova Perspectiva sobre Mobilidade Urbana",
       paragraph1: "A 1Tenor Consulting foi fundada para preencher a lacuna entre as tecnologias emergentes e a implementação urbana prática. Reunimos expertise em sistemas de cidades inteligentes, análise de dados e planejamento de transporte sustentável.",
-      paragraph2: "Como uma nova consultoria, oferecemos a agilidade para adotar soluções de ponta sem restrições de sistemas legados. Fazemos parcerias com municípios e organizações inovadoras prontas para moldar o futuro da mobilidade urbana.",
+      paragraph2: "Como uma nova consultoria, oferecemos a agilidade para adotar soluções de ponta sem restrições de sistemas legados. Fazemos parcerias com organizações inovadoras prontas para moldar o futuro da mobilidade urbana.",
       highlights: [
         "Profunda expertise em tecnologias emergentes de cidades inteligentes",
         "Abordagem agnóstica à tecnologia com foco em resultados",
@@ -272,11 +295,11 @@ export const translations: Record<Language, Translation> = {
       form: {
         honeypot: "Não preencha isso se você for humano",
         firstNameLabel: "Nome",
-        firstNamePlaceholder: "Nome",
+        firstNamePlaceholder: "Seu Nome",
         lastNameLabel: "Sobrenome",
-        lastNamePlaceholder: "Sobrenome",
+        lastNamePlaceholder: "Seu Sobrenome",
         emailLabel: "E-mail",
-        emailPlaceholder: "email@exemplo.com",
+        emailPlaceholder: "nome@exemplo.com",
         organizationLabel: "Organização",
         organizationPlaceholder: "Organização",
         messageLabel: "Mensagem",
@@ -289,7 +312,7 @@ export const translations: Record<Language, Translation> = {
       description: "Trazendo expertise tecnológica de ponta para a mobilidade urbana e desenvolvimento de cidades inteligentes. Vamos construir o futuro juntos.",
       technologiesTitle: "Tecnologias",
       technologiesLinks: [
-        { label: "Soluções LiDAR", href: "#insights" },
+        { label: "Soluções LiDAR", href: "/bluecity" },
         { label: "Sistemas de Visão IA", href: "#insights" },
         { label: "Redes IoT", href: "#insights" },
         { label: "Gêmeos Digitais", href: "#insights" },
@@ -309,6 +332,65 @@ export const translations: Record<Language, Translation> = {
       copyright: "1Tenor Consulting. Todos os direitos reservados.",
       privacyPolicy: "Política de Privacidade",
       termsOfService: "Termos de Serviço"
+    },
+    bluecityHotsite: {
+      backLink: "Voltar para o Início",
+      hero: {
+        title: "BlueCity",
+        span: "LiDAR",
+        subtitle: "Solução completa de LiDAR 3D com inteligência artificial para operações de tráfego, planejamento e segurança viária.",
+        badge: "Atuação | Análise | Alertas"
+      },
+      architecture: {
+        title: "Arquitetura de",
+        span: "Última Geração",
+        heading: "BlueCity LiDAR",
+        description: "O sensor captura o ambiente com precisão cirúrgica em 3D.",
+        items: ["5 Milhões de pontos por segundo", "128 feixes de laser independentes", "Amplo campo de visão espacial", "Certificação NEMA TS2"]
+      },
+      comparison: {
+        title: "Vantagem Tecnológica:",
+        span: "LiDAR",
+        cards: [
+          { title: "Luminosidade", description: "Opera no escuro total. Sem necessidade de iluminação pública para detecção precisa." },
+          { title: "Clima Adverso", description: "Imune a chuva, neblina e brilho solar excessivo que cegam câmeras comuns." },
+          { title: "Privacidade", description: "Privacidade nativa. Sem reconhecimento facial ou captura de placas (GDPR/LGPD compliance)." }
+        ]
+      },
+      intersections: {
+        title: "Gestão de",
+        span: "Cruzamentos",
+        heading: "Acionamento Multimodal",
+        items: ["Detecção de faixa de parada", "Extensão de tempo para pedestres", "Integração V2X (veículos conectados)", "Gêmeo digital de tráfego em tempo real"]
+      },
+      highways: {
+        title: "Segurança em",
+        span: "Rodovias",
+        heading: "Alertas em Tempo Real",
+        items: ["Detecção de veículos na contramão", "Identificação de veículos parados", "Monitoramento de rampas e acessos", "Integração via API e Mensagens SAE"]
+      },
+      installation: {
+        title: "Instalação",
+        span: "Rápida e Fácil",
+        heading: "Eficiência Operacional",
+        items: ["Instalado em 3 a 5 horas por cruzamento", "Fixado em postes existentes", "Baixa manutenção e calibração remota", "MTBF superior a 250.000 horas"]
+      },
+      certifications: {
+        title: "Confiabilidade",
+        span: "Certificada",
+        cards: [
+          { title: "NEMA TS2", description: "Padrão global para hardware de tráfego" },
+          { title: "ISO 27001", description: "Segurança da Informação e Dados" },
+          { title: "IP68 & IP69K", description: "Resistência total a água e poeira" }
+        ]
+      },
+      footer: {
+        title: "Vamos modernizar suas",
+        span: "vias?",
+        subtitle: "Uma solução escalável, integrada e com excelente relação custo-benefício.",
+        name: "Antenor Simões",
+        role: "Consultor ITS | 1Tenor Consulting"
+      }
     }
   },
   en: {
@@ -326,7 +408,12 @@ export const translations: Record<Language, Translation> = {
       buttonContact: "Schedule a Consultation",
       buttonExplore: "Explore Our Ideas",
       focusTitle: "Our Technology Focus",
-      focusTags: ["LiDAR Sensing", "AI Vision Systems", "IoT Networks", "Digital Twins"]
+      focusTags: [
+        { label: "LiDAR Sensing", href: "/bluecity" },
+        { label: "AI Vision Systems" },
+        { label: "IoT Networks" },
+        { label: "Digital Twins" }
+      ]
     },
     insights: {
       badge: "Ideas & Insights",
@@ -338,7 +425,8 @@ export const translations: Record<Language, Translation> = {
           category: "LiDAR Technology",
           title: "3D Traffic Sensing with LiDAR",
           description: "LiDAR sensors create precise 3D models of traffic flow, enabling anonymous vehicle counting, speed detection, and near-miss analysis at intersections without privacy concerns.",
-          tags: ["Point Clouds", "Traffic Analysis", "Privacy-First"]
+          tags: ["Point Clouds", "Traffic Analysis", "Privacy-First"],
+          href: "/bluecity"
         },
         {
           category: "Smart Cameras",
@@ -385,7 +473,8 @@ export const translations: Record<Language, Translation> = {
         {
           alt: "LiDAR point cloud visualization of urban traffic",
           title: "LiDAR Sensing",
-          description: "3D mapping technology for precise traffic analysis"
+          description: "3D mapping technology for precise traffic analysis",
+          href: "/bluecity"
         },
         {
           alt: "Modern smart rail station with digital displays",
@@ -439,7 +528,7 @@ export const translations: Record<Language, Translation> = {
       badge: "About Us",
       title: "A New Perspective on Urban Mobility",
       paragraph1: "1Tenor Consulting was founded to bridge the gap between emerging technologies and practical urban implementation. We bring together expertise in smart city systems, data analytics, and sustainable transportation planning.",
-      paragraph2: "As a new consultancy, we offer the agility to embrace cutting-edge solutions without legacy constraints. We partner with forward-thinking municipalities and organizations ready to shape the future of urban mobility.",
+      paragraph2: "As a new consultancy, we offer the agility to embrace cutting-edge solutions without legacy constraints. We partner with forward-thinking organizations ready to shape the future of urban mobility.",
       highlights: [
         "Deep expertise in emerging smart city technologies",
         "Technology-agnostic approach focused on outcomes",
@@ -464,13 +553,13 @@ export const translations: Record<Language, Translation> = {
       form: {
         honeypot: "Do not fill this out if you are human",
         firstNameLabel: "First Name",
-        firstNamePlaceholder: "First Name",
+        firstNamePlaceholder: "Your Name",
         lastNameLabel: "Last Name",
-        lastNamePlaceholder: "Last Name",
+        lastNamePlaceholder: "Your Last Name",
         emailLabel: "Email",
-        emailPlaceholder: "email@example.com",
+        emailPlaceholder: "you@example.com",
         organizationLabel: "Organization",
-        organizationPlaceholder: "Organization",
+        organizationPlaceholder: "Your Organization",
         messageLabel: "Message",
         messagePlaceholder: "Tell us about your project or ask about our technology insights...",
         buttonSending: "Sending...",
@@ -481,7 +570,7 @@ export const translations: Record<Language, Translation> = {
       description: "Bringing cutting-edge technology expertise to urban mobility and smart city development. Let's build the future together.",
       technologiesTitle: "Technologies",
       technologiesLinks: [
-        { label: "LiDAR Solutions", href: "#insights" },
+        { label: "LiDAR Solutions", href: "/bluecity" },
         { label: "AI Vision Systems", href: "#insights" },
         { label: "IoT Networks", href: "#insights" },
         { label: "Digital Twins", href: "#insights" },
@@ -501,6 +590,65 @@ export const translations: Record<Language, Translation> = {
       copyright: "1Tenor Consulting. All rights reserved.",
       privacyPolicy: "Privacy Policy",
       termsOfService: "Terms of Service"
+    },
+    bluecityHotsite: {
+      backLink: "Back to Home",
+      hero: {
+        title: "BlueCity",
+        span: "LiDAR",
+        subtitle: "Complete 3D LiDAR solution with AI for traffic operations, planning, and road safety.",
+        badge: "Actuation | Analysis | Alerts"
+      },
+      architecture: {
+        title: "Next-Gen",
+        span: "Architecture",
+        heading: "BlueCity LiDAR",
+        description: "The sensor captures the environment with surgical 3D precision.",
+        items: ["5 Million points per second", "128 independent laser beams", "Wide spatial field of view", "NEMA TS2 Certified"]
+      },
+      comparison: {
+        title: "Technological Advantage:",
+        span: "LiDAR",
+        cards: [
+          { title: "Luminosity", description: "Operates in total darkness. No need for public lighting for precise detection." },
+          { title: "Adverse Weather", description: "Immune to rain, fog, and excessive sun glare that blind common cameras." },
+          { title: "Privacy", description: "Privacy by design. No facial recognition or plate capture (GDPR/LGPD compliant)." }
+        ]
+      },
+      intersections: {
+        title: "Intersection",
+        span: "Management",
+        heading: "Multimodal Actuation",
+        items: ["Stop bar detection", "Pedestrian clearance extension", "V2X integration (connected vehicles)", "Real-time digital traffic twin"]
+      },
+      highways: {
+        title: "Highway",
+        span: "Safety",
+        heading: "Real-Time Alerts",
+        items: ["Wrong-way driver detection", "Stopped vehicle identification", "Ramp and access monitoring", "API and SAE message integration"]
+      },
+      installation: {
+        title: "Quick & Easy",
+        span: "Installation",
+        heading: "Operational Efficiency",
+        items: ["3 to 5 hours per intersection", "Installed on existing poles", "Low maintenance and remote calibration", "MTBF over 250,000 hours"]
+      },
+      certifications: {
+        title: "Certified",
+        span: "Reliability",
+        cards: [
+          { title: "NEMA TS2", description: "Global standard for traffic hardware" },
+          { title: "ISO 27001", description: "Information and Data Security" },
+          { title: "IP68 & IP69K", description: "Total water and dust resistance" }
+        ]
+      },
+      footer: {
+        title: "Let's modernize your",
+        span: "roads?",
+        subtitle: "A scalable, integrated, and cost-effective solution.",
+        name: "Antenor Simões",
+        role: "ITS Consultant | 1Tenor Consulting"
+      }
     }
   }
 };

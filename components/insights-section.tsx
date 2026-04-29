@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Radar, Cctv, Train, Car, TrafficCone, Zap } from "lucide-react"
+import Link from "next/link" // <-- IMPORT ADICIONADO AQUI
 import { useLanguage } from "@/components/language-provider"
 
 // Mantemos apenas os ícones aqui, na mesma ordem dos itens do array de tradução
@@ -31,10 +32,12 @@ export function InsightsSection() {
             // Pegamos o ícone correspondente pelo índice (posição no array)
             const IconComponent = insightIcons[index]
             
-            return (
+            // Separamos o conteúdo do Card numa constante para não duplicar código
+            const cardContent = (
               <Card
-                key={insight.title}
-                className="group flex flex-col border-border/50 bg-background transition-all hover:border-primary/30 hover:shadow-lg"
+                className={`group flex h-full flex-col border-border/50 bg-background transition-all hover:border-primary/30 hover:shadow-lg ${
+                  insight.href ? "cursor-pointer" : ""
+                }`}
               >
                 <CardHeader>
                   <div className="mb-2 flex items-center justify-between">
@@ -63,6 +66,22 @@ export function InsightsSection() {
                   </div>
                 </CardContent>
               </Card>
+            )
+
+            // Se o item tiver um "href" no translations.ts, envolvemos com o Link
+            if (insight.href) {
+              return (
+                <Link key={insight.title} href={insight.href} className="block h-full">
+                  {cardContent}
+                </Link>
+              )
+            }
+
+            // Se não tiver, renderiza a div normal
+            return (
+              <div key={insight.title} className="h-full">
+                {cardContent}
+              </div>
             )
           })}
         </div>

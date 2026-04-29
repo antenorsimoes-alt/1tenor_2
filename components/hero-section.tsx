@@ -3,10 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Link2, Car, Cctv, Train } from "lucide-react"
 import Image from "next/image"
-import { useLanguage } from "@/components/language-provider" // Importando o hook
+import Link from "next/link"
+import { useLanguage } from "@/components/language-provider"
 
 export function HeroSection() {
-  const { t } = useLanguage() // Extraindo as traduções
+  const { t } = useLanguage()
 
   return (
     <section className="relative overflow-hidden py-12 md:py-16 lg:py-20">
@@ -69,17 +70,31 @@ export function HeroSection() {
                 {t.hero.focusTitle}
               </p>
               <div className="flex flex-wrap gap-3">
-                {/* Renderizando as tags dinamicamente do dicionário */}
-                {t.hero.focusTags.map((tag, index) => (
-                  <span key={index} className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
-                    {tag}
-                  </span>
-                ))}
+                {/* Renderizando as tags dinamicamente */}
+                {t.hero.focusTags.map((tag, index) => {
+                  // Se a tag tiver um link (href), envolvemos com o Link
+                  if (tag.href) {
+                    return (
+                      <Link key={index} href={tag.href}>
+                        <span className="rounded-full bg-secondary px-3 py-1 text-sm text-primary transition-colors hover:bg-primary hover:text-white cursor-pointer">
+                          {tag.label}
+                        </span>
+                      </Link>
+                    )
+                  }
+                  
+                  // Se não tiver link, renderiza como texto normal
+                  return (
+                    <span key={index} className="rounded-full bg-secondary px-3 py-1 text-sm text-primary">
+                      {tag.label}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           </div>
 
-          {/* Right Visual - Animated (Mantido sem alterações) */}
+          {/* Right Visual - Animated */}
           <div className="relative flex items-center justify-center lg:justify-end">
             <div className="relative h-80 w-80 md:h-96 md:w-96 lg:h-[450px] lg:w-[450px]">
               {/* Outer circle - slow rotation */}
