@@ -48,7 +48,7 @@ export function Header() {
             className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors ml-2 cursor-pointer"
           >
             <Globe className="h-4 w-4" />
-            {language === 'pt' ? 'EN' : 'PT'}
+            {language === 'pt' ? 'EN' : 'BR'}
           </button>
 
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 ml-2">
@@ -64,7 +64,7 @@ export function Header() {
             className="flex items-center text-sm font-medium text-foreground/80 cursor-pointer"
           >
             <Globe className="h-5 w-5 mr-1" />
-            {language === 'pt' ? 'EN' : 'PT'}
+            {language === 'pt' ? 'EN' : 'BR'}
           </button>
 
           <button
