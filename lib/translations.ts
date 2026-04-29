@@ -360,7 +360,7 @@ export const translations: Record<Language, Translation> = {
       intersections: {
         title: "Gestão de",
         span: "Cruzamentos",
-        heading: "Acionamento Multimodal",
+        heading: "Atuação Multimodal",
         items: ["Detecção de faixa de parada", "Extensão de tempo para pedestres", "Integração V2X (veículos conectados)", "Gêmeo digital de tráfego em tempo real"]
       },
       highways: {
