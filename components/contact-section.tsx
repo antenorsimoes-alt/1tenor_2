@@ -5,36 +5,33 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { sendEmail } from "@/app/actions"
+import { useLanguage } from "@/components/language-provider"
 
 export function ContactSection() {
-  // Estados para controlar a interface de usuário (UX)
+  const { t } = useLanguage()
   const [isPending, setIsPending] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  // Função que intercepta o envio do formulário
-  async function handleSubmit(event) {
-    event.preventDefault() // Evita que a página recarregue
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     
     const formData = new FormData(event.currentTarget)
 
-    // 1. VERIFICAÇÃO DO HONEYPOT (Anti-Spam)
-    // Se o robô preencher este campo escondido, nós o enganamos
     if (formData.get("bot_field")) {
       setIsSuccess(true)
       return
     }
 
-    // 2. INICIA O ENVIO REAL
     setIsPending(true)
     
     try {
       await sendEmail(formData)
-      setIsSuccess(true) // Mostra a mensagem de sucesso!
+      setIsSuccess(true)
     } catch (error) {
       console.error("Erro ao enviar email:", error)
-      alert("Oops! Something went wrong. Please try again.")
+      alert(t.contact.errorAlert)
     } finally {
-      setIsPending(false) // Tira o botão do estado de "carregando"
+      setIsPending(false)
     }
   }
 
@@ -45,21 +42,18 @@ export function ContactSection() {
           {/* Header */}
           <div className="mb-10 text-center">
             <span className="text-sm font-medium uppercase tracking-wider text-primary">
-              Get in Touch
+              {t.contact.badge}
             </span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
-              Let&apos;s Build the Future Together
+              {t.contact.title}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Interested in exploring smart city technologies for your project? 
-              Send us a message and we&apos;ll get back to you shortly.
+              {t.contact.description}
             </p>
           </div>
 
           {/* Área do Formulário */}
           <div className="rounded-2xl bg-card p-6 shadow-lg md:p-8">
-            
-            {/* Se isSuccess for VERDADEIRO, mostra a mensagem de sucesso */}
             {isSuccess ? (
               <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-500">
                 <div className="mb-4 rounded-full bg-green-100 p-3 text-green-600 dark:bg-green-900/30 dark:text-green-400">
@@ -67,49 +61,48 @@ export function ContactSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
+                <h3 className="text-2xl font-bold text-foreground">{t.contact.successTitle}</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Thank you for reaching out. We will get back to you very soon.
+                  {t.contact.successDescription}
                 </p>
                 <Button 
                   variant="outline" 
                   className="mt-6"
-                  onClick={() => setIsSuccess(false)} // Botão para enviar nova mensagem
+                  onClick={() => setIsSuccess(false)}
                 >
-                  Send another message
+                  {t.contact.successButton}
                 </Button>
               </div>
             ) : (
-              // Se isSuccess for FALSO, mostra o formulário normalmente
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 
-                {/* CAMPO HONEYPOT (Invisível para humanos, visível para robôs) */}
+                {/* CAMPO HONEYPOT */}
                 <div className="hidden" aria-hidden="true">
-                  <label htmlFor="bot_field">Do not fill this out if you are human</label>
+                  <label htmlFor="bot_field">{t.contact.form.honeypot}</label>
                   <input type="text" id="bot_field" name="bot_field" tabIndex={-1} autoComplete="off" />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="firstName" className="text-sm font-medium text-foreground">
-                      First Name
+                      {t.contact.form.firstNameLabel}
                     </label>
                     <Input
                       id="firstName"
                       name="firstName"
-                      placeholder="John"
+                      placeholder={t.contact.form.firstNamePlaceholder}
                       required
                       className="bg-background"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="lastName" className="text-sm font-medium text-foreground">
-                      Last Name
+                      {t.contact.form.lastNameLabel}
                     </label>
                     <Input
                       id="lastName"
                       name="lastName"
-                      placeholder="Doe"
+                      placeholder={t.contact.form.lastNamePlaceholder}
                       required
                       className="bg-background"
                     />
@@ -118,13 +111,13 @@ export function ContactSection() {
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground">
-                    Email
+                    {t.contact.form.emailLabel}
                   </label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder={t.contact.form.emailPlaceholder}
                     required
                     className="bg-background"
                   />
@@ -132,24 +125,24 @@ export function ContactSection() {
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="organization" className="text-sm font-medium text-foreground">
-                    Organization
+                    {t.contact.form.organizationLabel}
                   </label>
                   <Input
                     id="organization"
                     name="organization"
-                    placeholder="City of Example"
+                    placeholder={t.contact.form.organizationPlaceholder}
                     className="bg-background"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Message
+                    {t.contact.form.messageLabel}
                   </label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder="Tell us about your project or ask about our technology insights..."
+                    placeholder={t.contact.form.messagePlaceholder}
                     rows={4}
                     required
                     className="bg-background"
@@ -159,10 +152,10 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={isPending} // Desativa o botão enquanto envia
+                  disabled={isPending}
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
-                  {isPending ? "Sending..." : "Send Message"}
+                  {isPending ? t.contact.form.buttonSending : t.contact.form.buttonSend}
                 </Button>
               </form>
             )}

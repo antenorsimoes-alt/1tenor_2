@@ -1,26 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import { Linkedin, Twitter } from "lucide-react"
-
-const footerLinks = {
-  technologies: [
-    { label: "LiDAR Solutions", href: "#insights" },
-    { label: "AI Vision Systems", href: "#insights" },
-    { label: "IoT Networks", href: "#insights" },
-    { label: "Digital Twins", href: "#insights" },
-  ],
-  company: [
-    { label: "About Us", href: "#about" },
-    { label: "Our Approach", href: "#insights" },
-    { label: "Contact", href: "#contact" },
-  ],
-  resources: [
-    { label: "Ideas & Insights", href: "#insights" },
-    { label: "Technology Trends", href: "#" },
-    { label: "Industry News", href: "#" },
-  ],
-}
+import { useLanguage } from "@/components/language-provider"
 
 export function Footer() {
+  const { t } = useLanguage()
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="container mx-auto px-4 py-12 md:px-6 md:py-16">
@@ -32,8 +19,7 @@ export function Footer() {
               <span className="text-lg text-muted-foreground">Consulting</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              Bringing cutting-edge technology expertise to urban mobility and smart
-              city development. Let&apos;s build the future together.
+              {t.footer.description}
             </p>
             <div className="mt-6 flex gap-4">
               <Link
@@ -55,9 +41,9 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-foreground">Technologies</h3>
+            <h3 className="mb-4 font-semibold text-foreground">{t.footer.technologiesTitle}</h3>
             <ul className="flex flex-col gap-3">
-              {footerLinks.technologies.map((link) => (
+              {t.footer.technologiesLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -71,9 +57,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold text-foreground">Company</h3>
+            <h3 className="mb-4 font-semibold text-foreground">{t.footer.companyTitle}</h3>
             <ul className="flex flex-col gap-3">
-              {footerLinks.company.map((link) => (
+              {t.footer.companyLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -87,9 +73,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold text-foreground">Resources</h3>
+            <h3 className="mb-4 font-semibold text-foreground">{t.footer.resourcesTitle}</h3>
             <ul className="flex flex-col gap-3">
-              {footerLinks.resources.map((link) => (
+              {t.footer.resourcesLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -106,20 +92,20 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} 1Tenor Consulting. All rights reserved.
+            © {currentYear} {t.footer.copyright}
           </p>
           <div className="flex gap-6">
             <Link
               href="#"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              Privacy Policy
+              {t.footer.privacyPolicy}
             </Link>
             <Link
               href="#"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              Terms of Service
+              {t.footer.termsOfService}
             </Link>
           </div>
         </div>
