@@ -91,7 +91,7 @@ export default function BlueCityPage() {
             </ul>
           </div>
           <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm">
-            <Image src="/images/bluecity/sensor.png" alt="Sensor" fill className="object-contain p-4" />
+            <Image src="/images/bluecity/sensor.gif" alt="Sensor" fill className="object-contain p-4" />
           </div>
         </div>
       </Slide>
@@ -124,7 +124,7 @@ export default function BlueCityPage() {
         </h2>
         <div className="grid w-full items-center gap-12 md:grid-cols-2">
           <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-black/40 backdrop-blur-sm">
-            <Image src="/images/bluecity/dashboard.png" alt="Dashboard" fill className="object-contain" />
+            <Image src="/images/bluecity/dashboard.gif" alt="Dashboard" fill className="object-contain" />
           </div>
           <div>
             <h3 className="mb-6 text-2xl font-bold text-[#00c49a]">{content.intersections.heading}</h3>
