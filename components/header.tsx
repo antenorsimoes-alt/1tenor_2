@@ -2,25 +2,62 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Globe } from "lucide-react" // Adicionei o ícone Globe
+import { Menu, X, Globe, ChevronDown, Check } from "lucide-react"
 import { useState } from "react"
-import { useLanguage } from "@/components/language-provider" // Importação do nosso hook
+import { useLanguage } from "@/components/language-provider"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+// Definimos os idiomas fora do componente para facilitar a adição de novos no futuro
+const AVAILABLE_LANGUAGES = [
+  { code: 'pt', label: 'PT', name: 'Português' },
+  { code: 'en', label: 'EN', name: 'English' },
+  // { code: 'es', label: 'ES', name: 'Español' }, <-- Exemplo de como seria fácil adicionar depois
+]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { t, language, setLanguage } = useLanguage() // Pegando funções e textos
+  const { t, language, setLanguage } = useLanguage()
 
-  // Movemos o array para dentro para ele ter acesso ao objeto 't'
   const navLinks = [
     { href: "#insights", label: t.header.insights },
     { href: "#about", label: t.header.about },
     { href: "#contact", label: t.header.contact },
   ]
 
-  // Função para alternar o idioma
-  const toggleLanguage = () => {
-    setLanguage(language === 'pt' ? 'en' : 'pt')
-  }
+  // Encontra o idioma atual para exibir no trigger do dropdown
+  const currentLang = AVAILABLE_LANGUAGES.find((l) => l.code === language) || AVAILABLE_LANGUAGES[0]
+
+  // Extraímos o seletor para um mini-componente interno para não repetir código no Desktop e Mobile
+  const LanguageDropdown = ({ isMobile = false }) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button 
+          className={`flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors cursor-pointer outline-none ${!isMobile && "ml-2"}`}
+        >
+          <Globe className={`${isMobile ? "h-5 w-5" : "h-4 w-4"}`} />
+          <span>{currentLang.label}</span>
+          <ChevronDown className="h-3 w-3 opacity-50" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align={isMobile ? "start" : "end"} className="w-40">
+        {AVAILABLE_LANGUAGES.map((lang) => (
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => setLanguage(lang.code)}
+            className="flex items-center justify-between cursor-pointer"
+          >
+            {lang.name}
+            {language === lang.code && <Check className="h-4 w-4 text-primary" />}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -42,30 +79,18 @@ export function Header() {
             </Link>
           ))}
           
-          {/* Botão de Trocar Idioma (Desktop) */}
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors ml-2 cursor-pointer"
-          >
-            <Globe className="h-4 w-4" />
-            {language === 'pt' ? 'EN' : 'BR'}
-          </button>
+          {/* Seletor de Idioma (Desktop) */}
+          <LanguageDropdown />
 
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 ml-2">
             <a href="#contact">{t.header.getStarted}</a>
           </Button>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button & Language Selector */}
         <div className="flex items-center gap-4 md:hidden">
-          {/* Botão de Trocar Idioma (Mobile) */}
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center text-sm font-medium text-foreground/80 cursor-pointer"
-          >
-            <Globe className="h-5 w-5 mr-1" />
-            {language === 'pt' ? 'EN' : 'BR'}
-          </button>
+          {/* Seletor de Idioma (Mobile) */}
+          <LanguageDropdown isMobile={true} />
 
           <button
             className="flex items-center justify-center"
