@@ -22,20 +22,24 @@ export function Footer() {
               {t.footer.description}
             </p>
             <div className="mt-6 flex gap-4">
-              <Link
-                href="#"
+              <a
+                href="https://www.linkedin.com/company/1tenor"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
+              </a>
+              <a
+                href="https://x.com/1TenorC"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-                aria-label="Twitter"
+                aria-label="X (Twitter)"
               >
                 <Twitter className="h-5 w-5" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -96,13 +100,13 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             <Link
-              href="#"
+              href="/privacy-policy"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {t.footer.privacyPolicy}
             </Link>
             <Link
-              href="#"
+              href="/terms-of-service"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {t.footer.termsOfService}

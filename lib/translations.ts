@@ -132,6 +132,16 @@ export type Translation = {
     certifications: { title: string; span: string; cards: Array<{ title: string; description: string }> };
     footer: { title: string; span: string; subtitle: string; name: string; role: string };
   };
+  privacyPolicy: {
+    title: string;
+    lastUpdated: string;
+    sections: Array<{ title: string; content: string }>;
+  };
+  termsOfService: {
+    title: string;
+    lastUpdated: string;
+    sections: Array<{ title: string; content: string }>;
+  };
 };
 
 export const translations: Record<Language, Translation> = {
@@ -391,6 +401,58 @@ export const translations: Record<Language, Translation> = {
         name: "Antenor Simões",
         role: "Consultor ITS | 1Tenor Consulting"
       }
+    },
+    privacyPolicy: {
+      title: "Política de Privacidade",
+      lastUpdated: "Última atualização: Abril de 2026",
+      sections: [
+        {
+          title: "1. Coleta de Informações",
+          content: "Coletamos informações pessoais que você nos fornece voluntariamente, como nome, endereço de e-mail e organização ao preencher formulários de contato em nosso site. Também podemos coletar dados de navegação não identificáveis para melhorar a experiência do usuário."
+        },
+        {
+          title: "2. Uso das Informações",
+          content: "As informações coletadas são utilizadas exclusivamente para responder às suas consultas, fornecer serviços solicitados, enviar comunicações relevantes sobre nossos serviços de consultoria em mobilidade urbana e melhorar nosso site."
+        },
+        {
+          title: "3. Compartilhamento de Dados",
+          content: "Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros para fins de marketing. Seus dados podem ser compartilhados com prestadores de serviços confiáveis que nos auxiliam na operação do site, sujeitos a acordos rígidos de confidencialidade."
+        },
+        {
+          title: "4. Segurança",
+          content: "Implementamos medidas de segurança técnicas e organizacionais apropriadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição acidental ou ilícita."
+        },
+        {
+          title: "5. Seus Direitos",
+          content: "Você tem o direito de solicitar acesso, correção, atualização ou exclusão de suas informações pessoais. Para exercer esses direitos ou para qualquer dúvida relacionada à privacidade, entre em contato conosco."
+        }
+      ]
+    },
+    termsOfService: {
+      title: "Termos de Serviço",
+      lastUpdated: "Última atualização: Abril de 2026",
+      sections: [
+        {
+          title: "1. Aceitação dos Termos",
+          content: "Ao acessar e utilizar o site da 1Tenor Consulting, você concorda em cumprir e ficar vinculado a estes Termos de Serviço e a todas as leis e regulamentos aplicáveis. Se você não concordar com algum destes termos, está proibido de usar ou acessar este site."
+        },
+        {
+          title: "2. Uso dos Serviços",
+          content: "O conteúdo deste site destina-se apenas a fins informativos gerais sobre nossos serviços de consultoria em cidades inteligentes. Você concorda em usar o site apenas para fins lícitos e de maneira que não infrinja os direitos de terceiros ou restrinja o uso e aproveitamento do site por qualquer outra pessoa."
+        },
+        {
+          title: "3. Propriedade Intelectual",
+          content: "Todo o conteúdo, design, textos, gráficos, interfaces e a seleção e organização dos mesmos neste site são de propriedade da 1Tenor Consulting ou de seus licenciadores, protegidos por leis de direitos autorais e propriedade intelectual."
+        },
+        {
+          title: "4. Limitação de Responsabilidade",
+          content: "Em nenhuma circunstância a 1Tenor Consulting será responsável por quaisquer danos diretos, indiretos, incidentais, consequenciais ou punitivos decorrentes do seu acesso ou uso, ou incapacidade de acessar ou usar, o site e seus conteúdos."
+        },
+        {
+          title: "5. Alterações nos Termos",
+          content: "Reservamo-nos o direito de modificar estes Termos de Serviço a qualquer momento, sem aviso prévio. Ao continuar a usar o site após quaisquer alterações, você aceita os Termos de Serviço revisados."
+        }
+      ]
     }
   },
   en: {
@@ -649,6 +711,58 @@ export const translations: Record<Language, Translation> = {
         name: "Antenor Simões",
         role: "ITS Consultant | 1Tenor Consulting"
       }
+    },
+    privacyPolicy: {
+      title: "Privacy Policy",
+      lastUpdated: "Last updated: April 2026",
+      sections: [
+        {
+          title: "1. Information Collection",
+          content: "We collect personal information that you voluntarily provide to us, such as your name, email address, and organization when filling out contact forms on our website. We may also collect non-identifiable browsing data to improve user experience."
+        },
+        {
+          title: "2. Use of Information",
+          content: "The information collected is used exclusively to respond to your inquiries, provide requested services, send relevant communications about our urban mobility consulting services, and improve our website."
+        },
+        {
+          title: "3. Data Sharing",
+          content: "We do not sell, rent, or share your personal information with third parties for marketing purposes. Your data may be shared with trusted service providers who assist us in operating our website, subject to strict confidentiality agreements."
+        },
+        {
+          title: "4. Security",
+          content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or accidental or unlawful destruction."
+        },
+        {
+          title: "5. Your Rights",
+          content: "You have the right to request access, correction, update, or deletion of your personal information. To exercise these rights or for any privacy-related inquiries, please contact us."
+        }
+      ]
+    },
+    termsOfService: {
+      title: "Terms of Service",
+      lastUpdated: "Last updated: April 2026",
+      sections: [
+        {
+          title: "1. Acceptance of Terms",
+          content: "By accessing and using the 1Tenor Consulting website, you agree to comply with and be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site."
+        },
+        {
+          title: "2. Use of Services",
+          content: "The content on this website is intended for general informational purposes only regarding our smart city consulting services. You agree to use the site only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the website."
+        },
+        {
+          title: "3. Intellectual Property",
+          content: "All content, design, text, graphics, interfaces, and the selection and arrangements thereof on this site are the property of 1Tenor Consulting or its licensors, protected by copyright and intellectual property laws."
+        },
+        {
+          title: "4. Limitation of Liability",
+          content: "In no event shall 1Tenor Consulting be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of, or inability to access or use, the website and its contents."
+        },
+        {
+          title: "5. Changes to Terms",
+          content: "We reserve the right to modify these Terms of Service at any time without prior notice. By continuing to use the site after any changes, you accept the revised Terms of Service."
+        }
+      ]
     }
   }
 };
