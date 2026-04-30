@@ -4,6 +4,8 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 // AJUSTE: Importando o nosso provider de idioma
 import { LanguageProvider } from '@/components/language-provider'
+// AJUSTE: Importando o botão do WhatsApp (da pasta ui, como você solicitou)
+import WhatsAppButton from '@/components/ui/whatsapp-button'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -29,7 +31,11 @@ export default function RootLayout({
         {/* AJUSTE: Envolvendo a aplicação inteira com o LanguageProvider */}
         <LanguageProvider>
           {children}
+          
+          {/* O botão do WhatsApp é renderizado globalmente aqui */}
+          <WhatsAppButton />
         </LanguageProvider>
+        
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

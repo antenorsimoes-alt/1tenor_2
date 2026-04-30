@@ -144,6 +144,9 @@ export type Translation = {
     lastUpdated: string;
     sections: Array<{ title: string; content: string }>;
   };
+  whatsapp: {
+    defaultMessage: string;
+  };
 };
 
 export const translations: Record<Language, Translation> = {
@@ -457,6 +460,9 @@ export const translations: Record<Language, Translation> = {
           content: "Reservamo-nos o direito de modificar estes Termos de Serviço a qualquer momento, sem aviso prévio. Ao continuar a usar o site após quaisquer alterações, você aceita os Termos de Serviço revisados."
         }
       ]
+    },
+    whatsapp: {
+      defaultMessage: "Olá! Gostaria de mais informações sobre os serviços de consultoria."
     }
   },
   en: {
@@ -769,6 +775,9 @@ export const translations: Record<Language, Translation> = {
           content: "We reserve the right to modify these Terms of Service at any time without prior notice. By continuing to use the site after any changes, you accept the revised Terms of Service."
         }
       ]
+    },
+    whatsapp: {
+      defaultMessage: "Hello! I would like more information about your consulting services."
     }
   },
   es: {
@@ -1081,6 +1090,9 @@ export const translations: Record<Language, Translation> = {
           content: "Nos reservamos el derecho de modificar estos Términos de Servicio en cualquier momento sin previo aviso. Al continuar utilizando el sitio después de cualquier cambio, usted acepta los Términos de Servicio revisados."
         }
       ]
+    },
+    whatsapp: {
+      defaultMessage: "¡Hola! Me gustaría obtener más información sobre sus servicios de consultoría."
     }
   }
 };
