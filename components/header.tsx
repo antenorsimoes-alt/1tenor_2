@@ -15,6 +15,7 @@ import {
 const AVAILABLE_LANGUAGES = [
   { code: 'pt', label: 'PT', name: 'Português' },
   { code: 'en', label: 'EN', name: 'English' },
+  { code: 'es', label: 'ES', name: 'Español' }, // <-- Espanhol adicionado
 ]
 
 export function Header() {
@@ -29,7 +30,6 @@ export function Header() {
 
   const currentLang = AVAILABLE_LANGUAGES.find((l) => l.code === language) || AVAILABLE_LANGUAGES[0]
 
-  // CORREÇÃO 1: Adicionada a tipagem { isMobile?: boolean }
   const LanguageDropdown = ({ isMobile = false }: { isMobile?: boolean }) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -45,8 +45,8 @@ export function Header() {
         {AVAILABLE_LANGUAGES.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            // CORREÇÃO 2: Afirmando ao TypeScript que o código é 'pt' ou 'en'
-            onClick={() => setLanguage(lang.code as "pt" | "en")}
+            // Adicionado o 'es' na afirmação de tipo para o TypeScript
+            onClick={() => setLanguage(lang.code as "pt" | "en" | "es")}
             className="flex items-center justify-between cursor-pointer"
           >
             {lang.name}

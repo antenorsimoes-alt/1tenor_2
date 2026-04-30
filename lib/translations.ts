@@ -1,4 +1,4 @@
-export type Language = 'pt' | 'en';
+export type Language = 'pt' | 'en' | 'es';
 
 type InsightItem = {
   category: string;
@@ -122,7 +122,7 @@ export type Translation = {
     termsOfService: string;
   };
   bluecityHotsite: {
-    backLink: string; // <-- Tipagem adicionada aqui
+    backLink: string;
     hero: { title: string; span: string; subtitle: string; badge: string };
     architecture: { title: string; span: string; heading: string; description: string; items: string[] };
     comparison: { title: string; span: string; cards: Array<{ title: string; description: string }> };
@@ -767,6 +767,318 @@ export const translations: Record<Language, Translation> = {
         {
           title: "5. Changes to Terms",
           content: "We reserve the right to modify these Terms of Service at any time without prior notice. By continuing to use the site after any changes, you accept the revised Terms of Service."
+        }
+      ]
+    }
+  },
+  es: {
+    header: {
+      insights: "Ideas y Artículos",
+      about: "Sobre Nosotros",
+      contact: "Contacto",
+      getStarted: "Empezar"
+    },
+    hero: {
+      badge: "Construyendo Futuros Urbanos Sostenibles",
+      headingPart1: "Transformando Ciudades a Través de la ",
+      headingPart2: "Movilidad Inteligente",
+      description: "Aportamos nuevas perspectivas y experiencia en tecnología de vanguardia para ayudar a gobiernos y organizaciones a navegar por el futuro de la movilidad urbana y la infraestructura de ciudades inteligentes.",
+      buttonContact: "Programar una Consulta",
+      buttonExplore: "Explorar Nuestras Ideas",
+      focusTitle: "Nuestro Enfoque Tecnológico",
+      focusTags: [
+        { label: "Sensores LiDAR", href: "/bluecity" },
+        { label: "Sistemas de Visión IA" },
+        { label: "Redes IoT" },
+        { label: "Gemelos Digitales" }
+      ]
+    },
+    insights: {
+      badge: "Ideas y Artículos",
+      title: "Tecnologías que Moldean las Ciudades del Mañana",
+      description: "Estamos a la vanguardia de las tecnologías emergentes que están revolucionando la movilidad urbana y el desarrollo de ciudades inteligentes. Esto es lo que nos entusiasma.",
+      cta: "Hable con nosotros sobre estas tecnologías",
+      items: [
+        {
+          category: "Tecnología LiDAR",
+          title: "Detección de Tráfico 3D con LiDAR",
+          description: "Los sensores LiDAR crean modelos 3D precisos del flujo de tráfico, lo que permite el conteo anónimo de vehículos, la detección de velocidad y el análisis de casi accidentes en intersecciones, sin problemas de privacidad.",
+          tags: ["Nubes de Puntos", "Análisis de Tráfico", "Privacidad Primero"],
+          href: "/bluecity"
+        },
+        {
+          category: "Cámaras Inteligentes",
+          title: "Radares de Velocidad con IA",
+          description: "Las cámaras de control de próxima generación utilizan IA para detectar el exceso de velocidad, saltarse semáforos en rojo y comportamientos peligrosos, al tiempo que proporcionan análisis de tráfico en tiempo real.",
+          tags: ["IA en el Borde", "Control y Sanción", "Análisis"]
+        },
+        {
+          category: "Control de Semáforos",
+          title: "Semáforos Adaptativos",
+          description: "Semáforos inteligentes que responden a las condiciones en tiempo real, priorizando vehículos de emergencia, optimizando las ondas verdes y reduciendo la congestión en horas punta.",
+          tags: ["Tiempo Real", "Prioridad de Emergencias", "Ondas Verdes"]
+        },
+        {
+          category: "Sistemas Ferroviarios",
+          title: "Ferrocarriles y Transporte Inteligente",
+          description: "Sistemas de monitorización integrados para trenes, tranvías y redes de metro que optimizan horarios, predicen necesidades de mantenimiento y mejoran la información a los pasajeros.",
+          tags: ["Mantenimiento Predictivo", "Programación", "Info. del Pasajero"]
+        },
+        {
+          category: "Vehículos Conectados",
+          title: "Comunicación V2X",
+          description: "Tecnología V2X (vehículo a todo) que permite a los coches comunicarse con semáforos, otros vehículos y la infraestructura para unas vías más seguras y eficientes.",
+          tags: ["V2I", "V2V", "Alertas de Seguridad"]
+        },
+        {
+          category: "Infraestructura de VE",
+          title: "Redes de Carga Inteligentes",
+          description: "Estaciones de carga de vehículos eléctricos inteligentes con precios dinámicos, equilibrio de red e integración con centros de transporte público para viajes multimodales sin interrupciones.",
+          tags: ["Equilibrio de Red", "Integración de Transporte", "Precios Dinámicos"]
+        }
+      ]
+    },
+    showcase: {
+      badge: "Insights Visuales",
+      title: "El Futuro de la Movilidad Urbana",
+      description: "Desde intersecciones inteligentes hasta redes ferroviarias conectadas, estas tecnologías están remodelando la forma en que se mueven las ciudades.",
+      items: [
+        {
+          alt: "Intersección de tráfico inteligente con vehículos conectados y señales adaptativas",
+          title: "Intersecciones Conectadas",
+          description: "Sistemas de gestión de tráfico con IA que se adaptan en tiempo real"
+        },
+        {
+          alt: "Visualización de nube de puntos LiDAR del tráfico urbano",
+          title: "Detección LiDAR",
+          description: "Tecnología de mapeo 3D para un análisis de tráfico preciso",
+          href: "/bluecity"
+        },
+        {
+          alt: "Moderna estación de tren inteligente con pantallas digitales",
+          title: "Sistemas Ferroviarios Inteligentes",
+          description: "Monitorización de transporte integrada e información al pasajero"
+        }
+      ]
+    },
+    spotlight: {
+      badge: "Destacado Tecnológico",
+      title: "Análisis Profundo: Nuestras Áreas de Enfoque",
+      lidarCard: {
+        title: "LiDAR para Ciudades Inteligentes",
+        description: "La tecnología de Detección y Medición por Luz (LiDAR) está revolucionando cómo las ciudades entienden y gestionan su entorno físico.",
+        features: [
+          {
+            title: "Análisis del Flujo de Tráfico",
+            description: "Conteo anónimo de vehículos y peatones con datos de velocidad y trayectoria"
+          },
+          {
+            title: "Monitorización de Infraestructura",
+            description: "Detecta condiciones de la superficie de la vía, cambios estructurales y necesidades de mantenimiento"
+          },
+          {
+            title: "Aplicaciones de Seguridad",
+            description: "Detección de casi accidentes e identificación de peligros en intersecciones"
+          }
+        ]
+      },
+      cameraCard: {
+        title: "Cámaras Inteligentes con IA",
+        description: "La visión por ordenador y la IA en el borde transforman las cámaras estándar en sensores inteligentes que entienden y responden a la dinámica urbana.",
+        features: [
+          {
+            title: "Control Adaptativo de Semáforos",
+            description: "Ajuste en tiempo real de las señales de tráfico en función de la demanda real"
+          },
+          {
+            title: "Detección de Incidentes",
+            description: "Identificación automática de accidentes, averías y eventos inusuales"
+          },
+          {
+            title: "Análisis Multimodal",
+            description: "Seguimiento simultáneo de vehículos, ciclistas, peatones y transporte público"
+          }
+        ]
+      },
+      buttonLearMore: "Más Información Sobre Nuestro Enfoque"
+    },
+    about: {
+      badge: "Sobre Nosotros",
+      title: "Una Nueva Perspectiva sobre la Movilidad Urbana",
+      paragraph1: "1Tenor Consulting se fundó para salvar la brecha entre las tecnologías emergentes y la implementación urbana práctica. Reunimos experiencia en sistemas de ciudades inteligentes, análisis de datos y planificación de transporte sostenible.",
+      paragraph2: "Como una nueva consultora, ofrecemos la agilidad para adoptar soluciones de vanguardia sin restricciones de sistemas heredados. Nos asociamos con organizaciones innovadoras preparadas para dar forma al futuro de la movilidad urbana.",
+      highlights: [
+        "Profunda experiencia en tecnologías emergentes de ciudades inteligentes",
+        "Enfoque agnóstico de la tecnología centrado en resultados",
+        "Compromiso con soluciones sostenibles y equitativas",
+        "Modelo de asociación colaborativa"
+      ],
+      cards: {
+        ideas: "Nuevas Ideas",
+        vision: "Visión Clara",
+        innovation: "Innovación",
+        results: "Resultados"
+      }
+    },
+    contact: {
+      badge: "Póngase en Contacto",
+      title: "Construyamos el Futuro Juntos",
+      description: "¿Interesado en explorar tecnologías de ciudades inteligentes para su proyecto? Envíenos un mensaje y nos pondremos en contacto con usted en breve.",
+      successTitle: "¡Mensaje Enviado!",
+      successDescription: "Gracias por contactarnos. Nos comunicaremos con usted muy pronto.",
+      successButton: "Enviar otro mensaje",
+      errorAlert: "¡Ups! Algo salió mal. Por favor, inténtelo de nuevo.",
+      form: {
+        honeypot: "No rellene esto si es humano",
+        firstNameLabel: "Nombre",
+        firstNamePlaceholder: "Nombre",
+        lastNameLabel: "Apellidos",
+        lastNamePlaceholder: "Apellidos",
+        emailLabel: "Correo Electrónico",
+        emailPlaceholder: "nombre@ejemplo.com",
+        organizationLabel: "Organización",
+        organizationPlaceholder: "Organización",
+        messageLabel: "Mensaje",
+        messagePlaceholder: "Cuéntenos sobre su proyecto o pregunte sobre nuestras tecnologías...",
+        buttonSending: "Enviando...",
+        buttonSend: "Enviar Mensaje"
+      }
+    },
+    footer: {
+      description: "Aportando experiencia tecnológica de vanguardia a la movilidad urbana y el desarrollo de ciudades inteligentes. Construyamos el futuro juntos.",
+      technologiesTitle: "Tecnologías",
+      technologiesLinks: [
+        { label: "Soluciones LiDAR", href: "/bluecity" },
+        { label: "Sistemas de Visión IA", href: "#insights" },
+        { label: "Redes IoT", href: "#insights" },
+        { label: "Gemelos Digitales", href: "#insights" },
+      ],
+      companyTitle: "Empresa",
+      companyLinks: [
+        { label: "Sobre Nosotros", href: "#about" },
+        { label: "Nuestro Enfoque", href: "#insights" },
+        { label: "Contacto", href: "#contact" },
+      ],
+      resourcesTitle: "Recursos",
+      resourcesLinks: [
+        { label: "Ideas y Artículos", href: "#insights" },
+        { label: "Tendencias Tecnológicas", href: "#" },
+        { label: "Noticias de la Industria", href: "#" },
+      ],
+      copyright: "1Tenor Consulting. Todos los derechos reservados.",
+      privacyPolicy: "Política de Privacidad",
+      termsOfService: "Términos de Servicio"
+    },
+    bluecityHotsite: {
+      backLink: "Volver al Inicio",
+      hero: {
+        title: "BlueCity",
+        span: "LiDAR",
+        subtitle: "Solución completa de LiDAR 3D con inteligencia artificial para operaciones de tráfico, planificación y seguridad vial.",
+        badge: "Actuación | Análisis | Alertas"
+      },
+      architecture: {
+        title: "Arquitectura de",
+        span: "Última Generación",
+        heading: "BlueCity LiDAR",
+        description: "El sensor captura el entorno con precisión quirúrgica en 3D.",
+        items: ["5 Millones de puntos por segundo", "128 haces de láser independientes", "Amplio campo de visión espacial", "Certificación NEMA TS2"]
+      },
+      comparison: {
+        title: "Ventaja Tecnológica:",
+        span: "LiDAR",
+        cards: [
+          { title: "Luminosidad", description: "Opera en la oscuridad total. Sin necesidad de iluminación pública para una detección precisa." },
+          { title: "Clima Adverso", description: "Inmune a la lluvia, la niebla y el resplandor solar excesivo que ciegan las cámaras comunes." },
+          { title: "Privacidad", description: "Privacidad por diseño. Sin reconocimiento facial ni captura de matrículas (Cumple con GDPR/RGPD)." }
+        ]
+      },
+      intersections: {
+        title: "Gestión de",
+        span: "Intersecciones",
+        heading: "Actuación Multimodal",
+        items: ["Detección de línea de parada", "Extensión de tiempo para peatones", "Integración V2X (vehículos conectados)", "Gemelo digital de tráfico en tiempo real"]
+      },
+      highways: {
+        title: "Seguridad en",
+        span: "Autopistas",
+        heading: "Alertas en Tiempo Real",
+        items: ["Detección de conductores en sentido contrario", "Identificación de vehículos detenidos", "Monitorización de rampas y accesos", "Integración vía API y Mensajes SAE"]
+      },
+      installation: {
+        title: "Instalación",
+        span: "Rápida y Fácil",
+        heading: "Eficiencia Operativa",
+        items: ["Instalado en 3 a 5 horas por intersección", "Fijado en postes existentes", "Bajo mantenimiento y calibración remota", "MTBF superior a 250.000 horas"]
+      },
+      certifications: {
+        title: "Fiabilidad",
+        span: "Certificada",
+        cards: [
+          { title: "NEMA TS2", description: "Estándar global para hardware de tráfico" },
+          { title: "ISO 27001", description: "Seguridad de la Información y Datos" },
+          { title: "IP68 e IP69K", description: "Resistencia total al agua y al polvo" }
+        ]
+      },
+      footer: {
+        title: "¿Modernizamos sus",
+        span: "vías?",
+        subtitle: "Una solución escalable, integrada y con excelente relación coste-beneficio.",
+        name: "Antenor Simões",
+        role: "Consultor ITS | 1Tenor Consulting"
+      }
+    },
+    privacyPolicy: {
+      backLink: "Volver al Inicio",
+      title: "Política de Privacidad",
+      lastUpdated: "Última actualización: Abril de 2026",
+      sections: [
+        {
+          title: "1. Recopilación de Información",
+          content: "Recopilamos información personal que usted nos proporciona voluntariamente, como su nombre, dirección de correo electrónico y organización al completar formularios de contacto en nuestro sitio web. También podemos recopilar datos de navegación no identificables para mejorar la experiencia del usuario."
+        },
+        {
+          title: "2. Uso de la Información",
+          content: "La información recopilada se utiliza exclusivamente para responder a sus consultas, proporcionar los servicios solicitados, enviar comunicaciones relevantes sobre nuestros servicios de consultoría en movilidad urbana y mejorar nuestro sitio web."
+        },
+        {
+          title: "3. Intercambio de Datos",
+          content: "No vendemos, alquilamos ni compartimos su información personal con terceros para fines de marketing. Sus datos pueden ser compartidos con proveedores de servicios de confianza que nos asisten en la operación de nuestro sitio web, sujetos a estrictos acuerdos de confidencialidad."
+        },
+        {
+          title: "4. Seguridad",
+          content: "Implementamos las medidas de seguridad técnicas y organizativas adecuadas para proteger su información personal contra el acceso no autorizado, alteración, divulgación o destrucción accidental o ilícita."
+        },
+        {
+          title: "5. Sus Derechos",
+          content: "Usted tiene derecho a solicitar el acceso, corrección, actualización o eliminación de su información personal. Para ejercer estos derechos o para cualquier consulta relacionada con la privacidad, póngase en contacto con nosotros."
+        }
+      ]
+    },
+    termsOfService: {
+      backLink: "Volver al Inicio",
+      title: "Términos de Servicio",
+      lastUpdated: "Última actualización: Abril de 2026",
+      sections: [
+        {
+          title: "1. Aceptación de los Términos",
+          content: "Al acceder y utilizar el sitio web de 1Tenor Consulting, usted acepta cumplir y estar sujeto a estos Términos de Servicio y a todas las leyes y regulaciones aplicables. Si no está de acuerdo con alguno de estos términos, tiene prohibido utilizar o acceder a este sitio."
+        },
+        {
+          title: "2. Uso de los Servicios",
+          content: "El contenido de este sitio web está destinado únicamente a fines informativos generales sobre nuestros servicios de consultoría de ciudades inteligentes. Usted acepta utilizar el sitio solo para fines lícitos y de una manera que no infrinja los derechos, restrinja o inhiba el uso y disfrute del sitio web por parte de cualquier otra persona."
+        },
+        {
+          title: "3. Propiedad Intelectual",
+          content: "Todo el contenido, diseño, textos, gráficos, interfaces y la selección y disposición de los mismos en este sitio son propiedad de 1Tenor Consulting o de sus licenciantes, protegidos por las leyes de derechos de autor y propiedad intelectual."
+        },
+        {
+          title: "4. Limitación de Responsabilidad",
+          content: "En ningún caso 1Tenor Consulting será responsable de ningún daño directo, indirecto, incidental, consecuente o punitivo que surja de su acceso o uso, o incapacidad de acceder o usar, el sitio web y sus contenidos."
+        },
+        {
+          title: "5. Cambios en los Términos",
+          content: "Nos reservamos el derecho de modificar estos Términos de Servicio en cualquier momento sin previo aviso. Al continuar utilizando el sitio después de cualquier cambio, usted acepta los Términos de Servicio revisados."
         }
       ]
     }
