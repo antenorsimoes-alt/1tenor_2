@@ -133,11 +133,13 @@ export type Translation = {
     footer: { title: string; span: string; subtitle: string; name: string; role: string };
   };
   privacyPolicy: {
+    backLink: string;
     title: string;
     lastUpdated: string;
     sections: Array<{ title: string; content: string }>;
   };
   termsOfService: {
+    backLink: string;
     title: string;
     lastUpdated: string;
     sections: Array<{ title: string; content: string }>;
@@ -403,6 +405,7 @@ export const translations: Record<Language, Translation> = {
       }
     },
     privacyPolicy: {
+      backLink: "Voltar para o Início",
       title: "Política de Privacidade",
       lastUpdated: "Última atualização: Abril de 2026",
       sections: [
@@ -429,6 +432,7 @@ export const translations: Record<Language, Translation> = {
       ]
     },
     termsOfService: {
+      backLink: "Voltar para o Início",
       title: "Termos de Serviço",
       lastUpdated: "Última atualização: Abril de 2026",
       sections: [
@@ -713,6 +717,7 @@ export const translations: Record<Language, Translation> = {
       }
     },
     privacyPolicy: {
+      backLink: "Back to Home",
       title: "Privacy Policy",
       lastUpdated: "Last updated: April 2026",
       sections: [
@@ -739,6 +744,7 @@ export const translations: Record<Language, Translation> = {
       ]
     },
     termsOfService: {
+      backLink: "Back to Home",
       title: "Terms of Service",
       lastUpdated: "Last updated: April 2026",
       sections: [
