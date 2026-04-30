@@ -12,11 +12,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// Definimos os idiomas fora do componente para facilitar a adição de novos no futuro
 const AVAILABLE_LANGUAGES = [
   { code: 'pt', label: 'PT', name: 'Português' },
   { code: 'en', label: 'EN', name: 'English' },
-  // { code: 'es', label: 'ES', name: 'Español' }, <-- Exemplo de como seria fácil adicionar depois
 ]
 
 export function Header() {
@@ -29,11 +27,10 @@ export function Header() {
     { href: "#contact", label: t.header.contact },
   ]
 
-  // Encontra o idioma atual para exibir no trigger do dropdown
   const currentLang = AVAILABLE_LANGUAGES.find((l) => l.code === language) || AVAILABLE_LANGUAGES[0]
 
-  // Extraímos o seletor para um mini-componente interno para não repetir código no Desktop e Mobile
-  const LanguageDropdown = ({ isMobile = false }) => (
+  // CORREÇÃO 1: Adicionada a tipagem { isMobile?: boolean }
+  const LanguageDropdown = ({ isMobile = false }: { isMobile?: boolean }) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button 
@@ -48,7 +45,8 @@ export function Header() {
         {AVAILABLE_LANGUAGES.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            // CORREÇÃO 2: Afirmando ao TypeScript que o código é 'pt' ou 'en'
+            onClick={() => setLanguage(lang.code as "pt" | "en")}
             className="flex items-center justify-between cursor-pointer"
           >
             {lang.name}
@@ -79,7 +77,6 @@ export function Header() {
             </Link>
           ))}
           
-          {/* Seletor de Idioma (Desktop) */}
           <LanguageDropdown />
 
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 ml-2">
@@ -89,7 +86,6 @@ export function Header() {
 
         {/* Mobile Menu Button & Language Selector */}
         <div className="flex items-center gap-4 md:hidden">
-          {/* Seletor de Idioma (Mobile) */}
           <LanguageDropdown isMobile={true} />
 
           <button
